@@ -10,12 +10,18 @@ import UIKit
 
 class GirisVC: UITableViewController {
     
+    
+    let varsayilanlar=UserDefaults.standard;
     var kategorilerListesi=["Uygulamayı Bitir","Kursu Bitir","Diğer Kursları Da Bitir"];
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        if nil != varsayilanlar.array(forKey: "YapilacaklarKategorileri"){
+            kategorilerListesi=varsayilanlar.array(forKey: "YapilacaklarKategorileri")  as! [String];
+        }
+        
     }
 
 
@@ -43,7 +49,7 @@ class GirisVC: UITableViewController {
 
     @IBAction func btnYeniSeyEkleBasildi(_ sender: UIBarButtonItem) {
         
-        var a=false;
+        
         
         let alarm=UIAlertController(title: "Yeni Kategori Ekle", message: "", preferredStyle: .alert);
         
@@ -62,6 +68,7 @@ class GirisVC: UITableViewController {
             else{
                 print(alarm.textFields![0].text!);
                 self.kategorilerListesi.append(alarm.textFields![0].text!);
+                self.varsayilanlar.set(self.kategorilerListesi, forKey: "YapilacaklarKategorileri");
                 self.tableView.reloadData();
                 
             }
@@ -69,11 +76,6 @@ class GirisVC: UITableViewController {
         alarm.addTextField { (txt) in
             txt.placeholder="Yeni Listenin Adı";
         }
-        
-       
-        
-        
-        
         alarm.addAction(aksiyon);
         alarm.addAction(aksiyonGeri);
         present(alarm, animated: true, completion: nil);
