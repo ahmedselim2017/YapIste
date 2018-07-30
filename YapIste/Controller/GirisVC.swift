@@ -10,7 +10,7 @@ import UIKit
 
 class GirisVC: UITableViewController {
     
-    let kategorilerListesi=["Uygulamayı Bitir","Kursu Bitir","Diğer Kursları Da Bitir"];
+    var kategorilerListesi=["Uygulamayı Bitir","Kursu Bitir","Diğer Kursları Da Bitir"];
     
     
     override func viewDidLoad() {
@@ -41,5 +41,43 @@ class GirisVC: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true);
     }
 
+    @IBAction func btnYeniSeyEkleBasildi(_ sender: UIBarButtonItem) {
+        
+        var a=false;
+        
+        let alarm=UIAlertController(title: "Yeni Kategori Ekle", message: "", preferredStyle: .alert);
+        
+        let aksiyonGeri=UIAlertAction(title: "Geri Dön", style: UIAlertAction.Style.destructive) { (aksiyon) in
+            alarm.dismiss(animated: true, completion: nil);
+        }
+        
+        let aksiyon=UIAlertAction(title: "Yeni Kategori Ekle", style: .default) { (aksiyon) in
+            if alarm.textFields![0].text==""{
+                self.present(alarm, animated: true, completion: nil);
+            }
+            else if self.kategorilerListesi.contains(alarm.textFields![0].text!){
+                alarm.message="Bu Liste Zaten Var";
+                self.present(alarm, animated: true, completion: nil);
+            }
+            else{
+                print(alarm.textFields![0].text!);
+                self.kategorilerListesi.append(alarm.textFields![0].text!);
+                self.tableView.reloadData();
+                
+            }
+        }
+        alarm.addTextField { (txt) in
+            txt.placeholder="Yeni Listenin Adı";
+        }
+        
+       
+        
+        
+        
+        alarm.addAction(aksiyon);
+        alarm.addAction(aksiyonGeri);
+        present(alarm, animated: true, completion: nil);
+        
+    }
 }
 

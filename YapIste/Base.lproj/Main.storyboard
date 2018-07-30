@@ -31,7 +31,14 @@
                             <outlet property="delegate" destination="CSp-bd-Bwh" id="Tz0-xC-NFI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Yap İşte" id="R3y-xB-Val"/>
+                    <navigationItem key="navigationItem" title="Yap İşte" id="R3y-xB-Val">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CBJ-j1-f70">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="btnYeniSeyEkleBasildi:" destination="CSp-bd-Bwh" id="Odg-uS-hDu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jz1-af-l2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
