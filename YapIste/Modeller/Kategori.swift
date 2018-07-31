@@ -8,7 +8,7 @@
 
 import Foundation;
 
-class Kategori {
+class Kategori:Encodable{
     private var _kategoriAdi:String;
     private var _isaretlenmisMi:Bool;
     

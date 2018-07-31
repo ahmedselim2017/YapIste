@@ -11,27 +11,31 @@ import UIKit
 class GirisVC: UITableViewController {
     
     
-    let varsayilanlar=UserDefaults.standard;
     var kategorilerListesi=[Kategori]();
 
+    let veriDosyaYolu=FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Kategoriler.plist");
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        print(veriDosyaYolu);
         
         let kategori1=Kategori(kategoritiAdi: "Uygulamayı Bitir", isaretlenmisMi: false);
         let kategori2=Kategori(kategoritiAdi: "Uygulafffmayı Bitir2", isaretlenmisMi: false);
         let kategori3=Kategori(kategoritiAdi: "ss Bitir3", isaretlenmisMi: false);
      
         
+        
+        
         kategorilerListesi.append(kategori1);
         kategorilerListesi.append(kategori2);
         kategorilerListesi.append(kategori3);
 
         
-        
-        if nil != varsayilanlar.array(forKey: "YapilacaklarKategorileriListeleri"){
-            kategorilerListesi=varsayilanlar.array(forKey: "YapilacaklarKategorileriListeleri")  as! [Kategori];
-        }
+ 
         
     }
 
@@ -68,6 +72,7 @@ class GirisVC: UITableViewController {
             kategorilerListesi[indexPath.row].isaretDegistir(yeniIsaret: true);
         }
         tableView.deselectRow(at: indexPath, animated: true);
+        verileriYaz();
     }
 
     @IBAction func btnYeniSeyEkleBasildi(_ sender: UIBarButtonItem) {
@@ -88,8 +93,8 @@ class GirisVC: UITableViewController {
                 print(alarm.textFields![0].text!);
                 let kategori=Kategori(kategoritiAdi: alarm.textFields![0].text!, isaretlenmisMi: false);
                 self.kategorilerListesi.append(kategori);
-                self.varsayilanlar.set(self.kategorilerListesi, forKey: "YapilacaklarKategorileriListeleri");
-                self.tableView.reloadData();
+
+                self.verileriYaz();
                 
             }
         }
@@ -100,6 +105,19 @@ class GirisVC: UITableViewController {
         alarm.addAction(aksiyonGeri);
         present(alarm, animated: true, completion: nil);
         
+    }
+    
+    func verileriYaz(){
+        let encoder = PropertyListEncoder();
+        do{
+            let veri=try encoder.encode(self.kategorilerListesi);
+            try veri.write(to: self.veriDosyaYolu!);
+            
+        }
+        catch{
+            print(error.localizedDescription);
+        }
+        self.tableView.reloadData();
     }
 }
 
