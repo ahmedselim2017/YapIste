@@ -49,7 +49,10 @@ class GirisVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row);
+
+//        icerik.delete(kategorilerListesi[indexPath.row]);
+//        kategorilerListesi.remove(at: indexPath.row);
+        
         if kategorilerListesi[indexPath.row].isaretlenmisMi{
             tableView.cellForRow(at: indexPath)?.accessoryType=UITableViewCell.AccessoryType.none;
             kategorilerListesi[indexPath.row].isaretlenmisMi=false;
