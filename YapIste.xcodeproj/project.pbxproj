@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93545B45210FDE7E004C5F50 /* Kategori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93545B44210FDE7E004C5F50 /* Kategori.swift */; };
 		93823233210D0F09007ABB1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93823232210D0F09007ABB1B /* AppDelegate.swift */; };
 		93823235210D0F09007ABB1B /* GirisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93823234210D0F09007ABB1B /* GirisVC.swift */; };
 		93823238210D0F09007ABB1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93823236210D0F09007ABB1B /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93545B44210FDE7E004C5F50 /* Kategori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategori.swift; sourceTree = "<group>"; };
 		9382322F210D0F09007ABB1B /* YapIste.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YapIste.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93823232210D0F09007ABB1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93823234210D0F09007ABB1B /* GirisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirisVC.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93545B43210FDE6B004C5F50 /* Modeller */ = {
+			isa = PBXGroup;
+			children = (
+				93545B44210FDE7E004C5F50 /* Kategori.swift */,
+			);
+			path = Modeller;
+			sourceTree = "<group>";
+		};
 		93823226210D0F09007ABB1B = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		93823231210D0F09007ABB1B /* YapIste */ = {
 			isa = PBXGroup;
 			children = (
+				93545B43210FDE6B004C5F50 /* Modeller */,
 				93823244210D0F8C007ABB1B /* Controller */,
 				93823232210D0F09007ABB1B /* AppDelegate.swift */,
 				93823236210D0F09007ABB1B /* Main.storyboard */,
@@ -143,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93545B45210FDE7E004C5F50 /* Kategori.swift in Sources */,
 				93823235210D0F09007ABB1B /* GirisVC.swift in Sources */,
 				93823233210D0F09007ABB1B /* AppDelegate.swift in Sources */,
 			);
