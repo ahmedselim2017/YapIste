@@ -22,21 +22,9 @@ class GirisVC: UITableViewController {
         
         
         print(veriDosyaYolu);
-        
-        let kategori1=Kategori(kategoritiAdi: "Uygulamayı Bitir", isaretlenmisMi: false);
-        let kategori2=Kategori(kategoritiAdi: "Uygulafffmayı Bitir2", isaretlenmisMi: false);
-        let kategori3=Kategori(kategoritiAdi: "ss Bitir3", isaretlenmisMi: false);
-     
-        
-        
-        
-        kategorilerListesi.append(kategori1);
-        kategorilerListesi.append(kategori2);
-        kategorilerListesi.append(kategori3);
 
-        
- 
-        
+
+        verileriGetir();
     }
 
 
@@ -118,6 +106,17 @@ class GirisVC: UITableViewController {
             print(error.localizedDescription);
         }
         self.tableView.reloadData();
+    }
+    
+    func verileriGetir(){
+        guard let veri = try? Data(contentsOf: veriDosyaYolu!) else{return;}
+        let decoder=PropertyListDecoder();
+        do{
+            kategorilerListesi=try decoder.decode([Kategori].self, from: veri);
+        }
+        catch{
+            print(error.localizedDescription);
+        }
     }
 }
 

@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93545B45210FDE7E004C5F50 /* Kategori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93545B44210FDE7E004C5F50 /* Kategori.swift */; };
 		93823233210D0F09007ABB1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93823232210D0F09007ABB1B /* AppDelegate.swift */; };
 		93823235210D0F09007ABB1B /* GirisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93823234210D0F09007ABB1B /* GirisVC.swift */; };
 		93823238210D0F09007ABB1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93823236210D0F09007ABB1B /* Main.storyboard */; };
 		9382323A210D0F0A007ABB1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93823239210D0F0A007ABB1B /* Assets.xcassets */; };
 		9382323D210D0F0A007ABB1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9382323B210D0F0A007ABB1B /* LaunchScreen.storyboard */; };
+		93C07B322111102600FDFD71 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93C07B302111102600FDFD71 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		93545B44210FDE7E004C5F50 /* Kategori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategori.swift; sourceTree = "<group>"; };
 		9382322F210D0F09007ABB1B /* YapIste.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YapIste.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93823232210D0F09007ABB1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93823234210D0F09007ABB1B /* GirisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirisVC.swift; sourceTree = "<group>"; };
@@ -24,6 +23,7 @@
 		93823239210D0F0A007ABB1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9382323C210D0F0A007ABB1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9382323E210D0F0A007ABB1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93C07B312111102600FDFD71 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +40,6 @@
 		93545B43210FDE6B004C5F50 /* Modeller */ = {
 			isa = PBXGroup;
 			children = (
-				93545B44210FDE7E004C5F50 /* Kategori.swift */,
 			);
 			path = Modeller;
 			sourceTree = "<group>";
@@ -71,6 +70,7 @@
 				93823239210D0F0A007ABB1B /* Assets.xcassets */,
 				9382323B210D0F0A007ABB1B /* LaunchScreen.storyboard */,
 				9382323E210D0F0A007ABB1B /* Info.plist */,
+				93C07B302111102600FDFD71 /* DataModel.xcdatamodeld */,
 			);
 			path = YapIste;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93545B45210FDE7E004C5F50 /* Kategori.swift in Sources */,
+				93C07B322111102600FDFD71 /* DataModel.xcdatamodeld in Sources */,
 				93823235210D0F09007ABB1B /* GirisVC.swift in Sources */,
 				93823233210D0F09007ABB1B /* AppDelegate.swift in Sources */,
 			);
@@ -354,6 +354,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		93C07B302111102600FDFD71 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				93C07B312111102600FDFD71 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 93C07B312111102600FDFD71 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 93823227210D0F09007ABB1B /* Project object */;
 }
