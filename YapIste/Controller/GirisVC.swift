@@ -22,10 +22,8 @@ class GirisVC: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        print(veriDosyaYolu);
-
-
-        
+        print(veriDosyaYolu!);
+        verileriGetir();
     }
 
 
@@ -108,15 +106,15 @@ class GirisVC: UITableViewController {
         self.tableView.reloadData();
     }
     
-//    func verileriGetir(){
-//        guard let veri = try? Data(contentsOf: veriDosyaYolu!) else{return;}
-//        let decoder=PropertyListDecoder();
-//        do{
-//            kategorilerListesi=try decoder.decode([Kategori].self, from: veri);
-//        }
-//        catch{
-//            print(error.localizedDescription);
-//        }
-//    }
+    func verileriGetir(){
+        let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
+        do{
+            kategorilerListesi=try icerik.fetch(istek);
+            self.tableView.reloadData();
+        }
+        catch{
+            print("VERİ GETİRİLEMEDİ");
+        }
+    }
 }
 
