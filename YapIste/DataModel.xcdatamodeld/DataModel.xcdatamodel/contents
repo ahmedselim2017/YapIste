@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14270.9" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Kategori" representedClassName=".Kategori" syncable="YES" codeGenerationType="class">
-        <attribute name="baslik" attributeType="String" syncable="YES"/>
-        <attribute name="seciliMi" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isaretlenmisMi" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kategoriAdi" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Kategori" positionX="-63" positionY="-18" width="128" height="75"/>

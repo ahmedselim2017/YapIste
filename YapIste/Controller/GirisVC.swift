@@ -6,7 +6,8 @@
 //  Copyright © 2018 Ahmed Selim Üzüm. All rights reserved.
 //
 
-import UIKit
+import UIKit;
+import CoreData;
 
 class GirisVC: UITableViewController {
     
@@ -14,7 +15,7 @@ class GirisVC: UITableViewController {
     var kategorilerListesi=[Kategori]();
 
     let veriDosyaYolu=FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Kategoriler.plist");
-    
+    let icerik=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class GirisVC: UITableViewController {
         print(veriDosyaYolu);
 
 
-        verileriGetir();
+        
     }
 
 
@@ -39,11 +40,11 @@ class GirisVC: UITableViewController {
         
         if kategorilerListesi[indexPath.row].isaretlenmisMi{
             hucre?.accessoryType=UITableViewCell.AccessoryType.checkmark;
-            kategorilerListesi[indexPath.row].isaretDegistir(yeniIsaret: true);
+            kategorilerListesi[indexPath.row].isaretlenmisMi=true;
         }
         else{
             hucre?.accessoryType=UITableViewCell.AccessoryType.none;
-            kategorilerListesi[indexPath.row].isaretDegistir(yeniIsaret: false);
+            kategorilerListesi[indexPath.row].isaretlenmisMi=false;
         }
         
         return hucre!;
@@ -53,11 +54,11 @@ class GirisVC: UITableViewController {
         print(indexPath.row);
         if kategorilerListesi[indexPath.row].isaretlenmisMi{
             tableView.cellForRow(at: indexPath)?.accessoryType=UITableViewCell.AccessoryType.none;
-            kategorilerListesi[indexPath.row].isaretDegistir(yeniIsaret: false);
+            kategorilerListesi[indexPath.row].isaretlenmisMi=false;
         }
         else{
             tableView.cellForRow(at: indexPath)?.accessoryType=UITableViewCell.AccessoryType.checkmark;
-            kategorilerListesi[indexPath.row].isaretDegistir(yeniIsaret: true);
+            kategorilerListesi[indexPath.row].isaretlenmisMi=true;
         }
         tableView.deselectRow(at: indexPath, animated: true);
         verileriYaz();
@@ -79,7 +80,9 @@ class GirisVC: UITableViewController {
             }
             else{
                 print(alarm.textFields![0].text!);
-                let kategori=Kategori(kategoritiAdi: alarm.textFields![0].text!, isaretlenmisMi: false);
+                let kategori=Kategori(context: self.icerik);
+                kategori.isaretlenmisMi=false;
+                kategori.kategoriAdi=alarm.textFields![0].text!;
                 self.kategorilerListesi.append(kategori);
 
                 self.verileriYaz();
@@ -96,27 +99,24 @@ class GirisVC: UITableViewController {
     }
     
     func verileriYaz(){
-        let encoder = PropertyListEncoder();
         do{
-            let veri=try encoder.encode(self.kategorilerListesi);
-            try veri.write(to: self.veriDosyaYolu!);
-            
+            try icerik.save();
         }
         catch{
-            print(error.localizedDescription);
+            print("VERİ YAZILAMADI");
         }
         self.tableView.reloadData();
     }
     
-    func verileriGetir(){
-        guard let veri = try? Data(contentsOf: veriDosyaYolu!) else{return;}
-        let decoder=PropertyListDecoder();
-        do{
-            kategorilerListesi=try decoder.decode([Kategori].self, from: veri);
-        }
-        catch{
-            print(error.localizedDescription);
-        }
-    }
+//    func verileriGetir(){
+//        guard let veri = try? Data(contentsOf: veriDosyaYolu!) else{return;}
+//        let decoder=PropertyListDecoder();
+//        do{
+//            kategorilerListesi=try decoder.decode([Kategori].self, from: veri);
+//        }
+//        catch{
+//            print(error.localizedDescription);
+//        }
+//    }
 }
 
