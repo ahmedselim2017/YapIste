@@ -9,9 +9,48 @@
     </dependencies>
     <scenes>
         <!--Yap İşte-->
+        <scene sceneID="Dz0-TC-XfE">
+            <objects>
+                <tableViewController id="lVG-4D-WMm" customClass="UstKategoriVC" customModule="YapIste" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="keI-7y-T3z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ustKategoriHucresi" id="gI8-iY-K7K">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gI8-iY-K7K" id="oXo-aH-KR5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lVG-4D-WMm" id="XcX-Fq-GfO"/>
+                            <outlet property="delegate" destination="lVG-4D-WMm" id="d9T-h1-niB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Yap İşte" id="YZ4-G1-y3g">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KQr-VI-PL2">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="btnEkleBasildi:" destination="lVG-4D-WMm" id="Hle-Ov-3O2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="CSp-bd-Bwh" kind="show" identifier="kategoriSegue" id="7Gw-ES-S66"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZf-8u-qx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998" y="140"/>
+        </scene>
+        <!--Yap İşte-->
         <scene sceneID="M9q-ED-hql">
             <objects>
-                <tableViewController storyboardIdentifier="girisVC" id="CSp-bd-Bwh" customClass="GirisVC" customModule="YapIste" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="girisVC" id="CSp-bd-Bwh" customClass="YapilacaklarVC" customModule="YapIste" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="P0c-lU-rh0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +89,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jz1-af-l2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="139.880059970015"/>
+            <point key="canvasLocation" x="1831" y="140"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LBX-TB-D2g">
@@ -67,7 +106,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="CSp-bd-Bwh" kind="relationship" relationship="rootViewController" id="CHb-jh-b3b"/>
+                        <segue destination="lVG-4D-WMm" kind="relationship" relationship="rootViewController" id="Wzo-q1-dQ8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPZ-gO-hFu" userLabel="First Responder" sceneMemberID="firstResponder"/>

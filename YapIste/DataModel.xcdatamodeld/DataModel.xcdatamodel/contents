@@ -3,8 +3,14 @@
     <entity name="Kategori" representedClassName=".Kategori" syncable="YES" codeGenerationType="class">
         <attribute name="isaretlenmisMi" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="kategoriAdi" attributeType="String" syncable="YES"/>
+        <relationship name="kategoriler" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UstKategori" inverseName="newRelationship" inverseEntity="UstKategori" syncable="YES"/>
+    </entity>
+    <entity name="UstKategori" representedClassName="UstKategori" syncable="YES" codeGenerationType="class">
+        <attribute name="isim" attributeType="String" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Kategori" inverseName="kategoriler" inverseEntity="Kategori" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Kategori" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Kategori" positionX="-223.3203125" positionY="5402.91015625" width="128" height="90"/>
+        <element name="UstKategori" positionX="-614.1640625" positionY="5410.921875" width="128" height="75"/>
     </elements>
 </model>

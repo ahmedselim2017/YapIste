@@ -9,7 +9,7 @@
 import UIKit;
 import CoreData;
 
-class GirisVC: UITableViewController {
+class YapilacaklarVC: UITableViewController {
     
     @IBOutlet weak var aramaBari: UISearchBar!
     
@@ -70,13 +70,13 @@ class GirisVC: UITableViewController {
         
         
         
-        let alarm=UIAlertController(title: "Yeni Kategori Ekle", message: "", preferredStyle: .alert);
+        let alarm=UIAlertController(title: "Yeni Yapılacak Ekle", message: "", preferredStyle: .alert);
         
         let aksiyonGeri=UIAlertAction(title: "Geri Dön", style: UIAlertAction.Style.destructive) { (aksiyon) in
             alarm.dismiss(animated: true, completion: nil);
         }
         
-        let aksiyon=UIAlertAction(title: "Yeni Kategori Ekle", style: .default) { (aksiyon) in
+        let aksiyon=UIAlertAction(title: "Yeni Yapılacak Ekle", style: .default) { (aksiyon) in
             if alarm.textFields![0].text==""{
                 self.present(alarm, animated: true, completion: nil);
             }
@@ -92,7 +92,7 @@ class GirisVC: UITableViewController {
             }
         }
         alarm.addTextField { (txt) in
-            txt.placeholder="Yeni Listenin Adı";
+            txt.placeholder="Yeni Yapılacağın Adı";
         }
         alarm.addAction(aksiyon);
         alarm.addAction(aksiyonGeri);
@@ -138,7 +138,7 @@ class GirisVC: UITableViewController {
   
 }
 
-extension GirisVC:UISearchBarDelegate{
+extension YapilacaklarVC:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         kategoriAra(searchBar.text!);
     }
