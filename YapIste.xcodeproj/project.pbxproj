@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F17E873D52A338F4FBBAB2D /* Pods_YapIste.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBDEBEC355B930F9F1CB9429 /* Pods_YapIste.framework */; };
 		93823233210D0F09007ABB1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93823232210D0F09007ABB1B /* AppDelegate.swift */; };
 		93823235210D0F09007ABB1B /* YapilacaklarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93823234210D0F09007ABB1B /* YapilacaklarVC.swift */; };
 		93823238210D0F09007ABB1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93823236210D0F09007ABB1B /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18A94F5B6754E1D729C9D90E /* Pods-YapIste.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YapIste.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YapIste/Pods-YapIste.debug.xcconfig"; sourceTree = "<group>"; };
+		6DAC49586B4AB706417CA28F /* Pods-YapIste.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YapIste.release.xcconfig"; path = "Pods/Target Support Files/Pods-YapIste/Pods-YapIste.release.xcconfig"; sourceTree = "<group>"; };
 		9382322F210D0F09007ABB1B /* YapIste.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YapIste.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93823232210D0F09007ABB1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93823234210D0F09007ABB1B /* YapilacaklarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapilacaklarVC.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		9382323E210D0F0A007ABB1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C07B312111102600FDFD71 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		93C07B542111444600FDFD71 /* UstKategoriVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UstKategoriVC.swift; sourceTree = "<group>"; };
+		FBDEBEC355B930F9F1CB9429 /* Pods_YapIste.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YapIste.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F17E873D52A338F4FBBAB2D /* Pods_YapIste.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B78F9D92DBACFD7947F0D32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBDEBEC355B930F9F1CB9429 /* Pods_YapIste.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		93823226210D0F09007ABB1B = {
 			isa = PBXGroup;
 			children = (
 				93823231210D0F09007ABB1B /* YapIste */,
 				93823230210D0F09007ABB1B /* Products */,
+				F6899EEEDA04780F36A2E386 /* Pods */,
+				3B78F9D92DBACFD7947F0D32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +93,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		F6899EEEDA04780F36A2E386 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18A94F5B6754E1D729C9D90E /* Pods-YapIste.debug.xcconfig */,
+				6DAC49586B4AB706417CA28F /* Pods-YapIste.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93823241210D0F0A007ABB1B /* Build configuration list for PBXNativeTarget "YapIste" */;
 			buildPhases = (
+				C2E021A4A83134A6844681B6 /* [CP] Check Pods Manifest.lock */,
 				9382322B210D0F09007ABB1B /* Sources */,
 				9382322C210D0F09007ABB1B /* Frameworks */,
 				9382322D210D0F09007ABB1B /* Resources */,
+				E458496EBB41A40E180E67AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -143,6 +169,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2E021A4A83134A6844681B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YapIste-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E458496EBB41A40E180E67AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YapIste/Pods-YapIste-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YapIste/Pods-YapIste-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9382322B210D0F09007ABB1B /* Sources */ = {
@@ -294,6 +359,7 @@
 		};
 		93823242210D0F0A007ABB1B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18A94F5B6754E1D729C9D90E /* Pods-YapIste.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -312,6 +378,7 @@
 		};
 		93823243210D0F0A007ABB1B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DAC49586B4AB706417CA28F /* Pods-YapIste.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
