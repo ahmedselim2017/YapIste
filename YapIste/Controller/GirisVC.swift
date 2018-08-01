@@ -127,23 +127,33 @@ class GirisVC: UITableViewController {
     }
     
     
-    
+    func kategoriAra(_ metin:String){
+        let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
+        
+        istek.predicate=NSPredicate(format: "kategoriAdi CONTAINS[cd] %@", metin);
+        
+        istek.sortDescriptors=[NSSortDescriptor(key: "kategoriAdi", ascending: true)];
+        verileriGetir(istek);
+    }
   
 }
 
 extension GirisVC:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
-        
-        istek.predicate=NSPredicate(format: "kategoriAdi CONTAINS[cd] %@", searchBar.text!)
-        
-        istek.sortDescriptors=[NSSortDescriptor(key: "kategoriAdi", ascending: true)];
-        
-        
-        verileriGetir(istek);
-        
-        
-        
+        kategoriAra(searchBar.text!);
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0{
+            verileriGetir(nil);
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder();
+            }
+        }
+        else{
+            kategoriAra(searchBar.text!);
+        }
+    }
+
 }
