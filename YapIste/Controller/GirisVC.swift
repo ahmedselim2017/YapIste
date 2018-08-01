@@ -11,6 +11,7 @@ import CoreData;
 
 class GirisVC: UITableViewController {
     
+    @IBOutlet weak var aramaBari: UISearchBar!
     
     var kategorilerListesi=[Kategori]();
 
@@ -22,8 +23,8 @@ class GirisVC: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        print(veriDosyaYolu!);
-        verileriGetir();
+        aramaBari.delegate=self;
+        verileriGetir(nil);
     }
 
 
@@ -109,15 +110,40 @@ class GirisVC: UITableViewController {
         self.tableView.reloadData();
     }
     
-    func verileriGetir(){
-        let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
+    func verileriGetir(_ verilenIstek:NSFetchRequest<Kategori>?){
         do{
-            kategorilerListesi=try icerik.fetch(istek);
+            if verilenIstek==nil{
+                let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
+                kategorilerListesi=try icerik.fetch(istek);
+            }
+            else{
+                kategorilerListesi=try icerik.fetch(verilenIstek!);
+            }
             self.tableView.reloadData();
         }
         catch{
             print("VERİ GETİRİLEMEDİ");
         }
     }
+    
+    
+    
+  
 }
 
+extension GirisVC:UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
+        
+        istek.predicate=NSPredicate(format: "kategoriAdi CONTAINS[cd] %@", searchBar.text!)
+        
+        istek.sortDescriptors=[NSSortDescriptor(key: "kategoriAdi", ascending: true)];
+        
+        
+        verileriGetir(istek);
+        
+        
+        
+    }
+    
+}
