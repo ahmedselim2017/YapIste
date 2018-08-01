@@ -11,6 +11,12 @@ import CoreData;
 
 class YapilacaklarVC: UITableViewController {
     
+    var secilenKategori:UstKategori?{
+        didSet{
+            print(secilenKategori?.isim);
+        }
+    }
+    
     @IBOutlet weak var aramaBari: UISearchBar!
     
     var kategorilerListesi=[Kategori]();
@@ -24,7 +30,7 @@ class YapilacaklarVC: UITableViewController {
         
         
         aramaBari.delegate=self;
-        verileriGetir(nil);
+        verileriGetir(nil,nil);
     }
 
 
@@ -85,6 +91,7 @@ class YapilacaklarVC: UITableViewController {
                 let kategori=Kategori(context: self.icerik);
                 kategori.isaretlenmisMi=false;
                 kategori.kategoriAdi=alarm.textFields![0].text!;
+                kategori.ustKategori=self.secilenKategori?.isim;
                 self.kategorilerListesi.append(kategori);
 
                 self.verileriYaz();
@@ -110,13 +117,17 @@ class YapilacaklarVC: UITableViewController {
         self.tableView.reloadData();
     }
     
-    func verileriGetir(_ verilenIstek:NSFetchRequest<Kategori>?){
+    func verileriGetir(_ verilenIstek:NSFetchRequest<Kategori>?,_ sorgu:NSPredicate?){
         do{
             if verilenIstek==nil{
                 let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
+                istek.predicate=NSPredicate(format: "ustKategori MATCHES %@", (secilenKategori?.isim)!);
                 kategorilerListesi=try icerik.fetch(istek);
             }
             else{
+                
+                verilenIstek?.predicate=NSCompoundPredicate.init(andPredicateWithSubpredicates: [sorgu!,NSPredicate(format: "ustKategori MATCHES %@", (secilenKategori?.isim)!)]);
+                
                 kategorilerListesi=try icerik.fetch(verilenIstek!);
             }
             self.tableView.reloadData();
@@ -130,10 +141,10 @@ class YapilacaklarVC: UITableViewController {
     func kategoriAra(_ metin:String){
         let istek:NSFetchRequest<Kategori>=Kategori.fetchRequest();
         
-        istek.predicate=NSPredicate(format: "kategoriAdi CONTAINS[cd] %@", metin);
+       
         
         istek.sortDescriptors=[NSSortDescriptor(key: "kategoriAdi", ascending: true)];
-        verileriGetir(istek);
+        verileriGetir(istek,NSPredicate(format: "kategoriAdi CONTAINS[cd] %@", metin));
     }
   
 }
@@ -145,7 +156,7 @@ extension YapilacaklarVC:UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0{
-            verileriGetir(nil);
+            verileriGetir(nil,nil);
             
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder();

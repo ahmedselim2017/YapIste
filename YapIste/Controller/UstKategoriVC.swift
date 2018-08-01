@@ -65,6 +65,19 @@ class UstKategoriVC: UITableViewController {
         return hucre!;
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "kategoriSegue", sender: self);
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let sonVC=segue.destination as! YapilacaklarVC;
+
+        let indeks=tableView.indexPathForSelectedRow;
+        
+        sonVC.secilenKategori=self.ustKategoriListe[(indeks?.row)!];
+        
+    }
+    
     
     
     func verileriYaz(){

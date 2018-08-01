@@ -39,13 +39,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		93545B43210FDE6B004C5F50 /* Modeller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modeller;
-			sourceTree = "<group>";
-		};
 		93823226210D0F09007ABB1B = {
 			isa = PBXGroup;
 			children = (
@@ -65,7 +58,6 @@
 		93823231210D0F09007ABB1B /* YapIste */ = {
 			isa = PBXGroup;
 			children = (
-				93545B43210FDE6B004C5F50 /* Modeller */,
 				93823244210D0F8C007ABB1B /* Controller */,
 				93823232210D0F09007ABB1B /* AppDelegate.swift */,
 				93823236210D0F09007ABB1B /* Main.storyboard */,
