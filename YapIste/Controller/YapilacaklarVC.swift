@@ -10,7 +10,7 @@ import UIKit;
 import CoreData;
 import SwipeCellKit;
 
-class YapilacaklarVC: UITableViewController {
+class YapilacaklarVC: UITableViewController ,SwipeTableViewCellDelegate{
     
     var secilenKategori:UstKategori?{
         didSet{
@@ -29,7 +29,7 @@ class YapilacaklarVC: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        tableView.rowHeight=80;
         aramaBari.delegate=self;
         verileriGetir(nil,nil);
     }
@@ -41,25 +41,30 @@ class YapilacaklarVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let hucre=tableView.dequeueReusableCell(withIdentifier: "girisHucresi");
-        hucre?.textLabel?.text=kategorilerListesi[indexPath.row].kategoriAdi;
+        let hucre=tableView.dequeueReusableCell(withIdentifier: "girisHucresi") as! SwipeTableViewCell;
+        hucre.textLabel?.text=kategorilerListesi[indexPath.row].kategoriAdi;
+        
+        
         
         if kategorilerListesi[indexPath.row].isaretlenmisMi{
-            hucre?.accessoryType=UITableViewCell.AccessoryType.checkmark;
+            hucre.accessoryType=UITableViewCell.AccessoryType.checkmark;
             kategorilerListesi[indexPath.row].isaretlenmisMi=true;
         }
         else{
-            hucre?.accessoryType=UITableViewCell.AccessoryType.none;
+            hucre.accessoryType=UITableViewCell.AccessoryType.none;
             kategorilerListesi[indexPath.row].isaretlenmisMi=false;
         }
         
-        return hucre!;
+        hucre.delegate=self;
+        
+        return hucre;
     }
+    
+   
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-//        icerik.delete(kategorilerListesi[indexPath.row]);
-//        kategorilerListesi.remove(at: indexPath.row);
+
         
         if kategorilerListesi[indexPath.row].isaretlenmisMi{
             tableView.cellForRow(at: indexPath)?.accessoryType=UITableViewCell.AccessoryType.none;
@@ -146,6 +151,34 @@ class YapilacaklarVC: UITableViewController {
         
         istek.sortDescriptors=[NSSortDescriptor(key: "kategoriAdi", ascending: true)];
         verileriGetir(istek,NSPredicate(format: "kategoriAdi CONTAINS[cd] %@", metin));
+    }
+    
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            self.icerik.delete(self.kategorilerListesi[indexPath.row]);
+            self.kategorilerListesi.remove(at: indexPath.row);
+            do{
+                try self.icerik.save();
+            }
+            catch{
+                print("VERİ YAZILAMADI");
+            }
+        }
+        
+        // customize the action appearance
+        deleteAction.image = #imageLiteral(resourceName: "Trash Icon");
+        
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive
+        options.transitionStyle = .border
+        return options
     }
   
 }
