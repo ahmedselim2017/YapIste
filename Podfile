@@ -7,6 +7,7 @@ target 'YapIste' do
 
   # Pods for YapIste
     pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'swift_4.2'
+    pod 'ChameleonFramework/Swift'
 
 
 end

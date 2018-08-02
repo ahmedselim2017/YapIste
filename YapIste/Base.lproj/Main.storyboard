@@ -33,7 +33,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Yap İşte" id="YZ4-G1-y3g">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KQr-VI-PL2">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="btnEkleBasildi:" destination="lVG-4D-WMm" id="Hle-Ov-3O2"/>
                             </connections>
@@ -96,13 +95,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wd2-IW-FPu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nm9-rM-sYy">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Nm9-rM-sYy">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.1137254902" green="0.6078695059" blue="0.96409267190000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

@@ -9,6 +9,7 @@
 import UIKit;
 import CoreData;
 import SwipeCellKit;
+import ChameleonFramework;
 
 class YapilacaklarVC: UITableViewController ,SwipeTableViewCellDelegate{
     
@@ -29,12 +30,32 @@ class YapilacaklarVC: UITableViewController ,SwipeTableViewCellDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
         tableView.rowHeight=80;
+        tableView.separatorStyle = .none;
         aramaBari.delegate=self;
         verileriGetir(nil,nil);
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor=UIColor(hexString: (secilenKategori?.renk)!);
+        navigationController?.navigationBar.tintColor=ContrastColorOf(UIColor(hexString: (secilenKategori?.renk)!)!, returnFlat: true);
+        navigationController?.navigationBar.largeTitleTextAttributes=[NSAttributedString.Key.foregroundColor:ContrastColorOf(UIColor(hexString: (secilenKategori?.renk)!)!, returnFlat: true)];
+        title=secilenKategori?.isim;
+        aramaBari.barTintColor=UIColor(hexString: (secilenKategori?.renk)!);
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor=#colorLiteral(red: 0.1052545831, green: 0.6784299016, blue: 0.9725491405, alpha: 1);
+        navigationController?.navigationBar.tintColor=ContrastColorOf(#colorLiteral(red: 0.1052545831, green: 0.6784299016, blue: 0.9725491405, alpha: 1), returnFlat: true);
+        navigationController?.navigationBar.largeTitleTextAttributes=[NSAttributedString.Key.foregroundColor:ContrastColorOf( #colorLiteral(red: 0.1052545831, green: 0.6784299016, blue: 0.9725491405, alpha: 1), returnFlat: true)];
+            title="Yap İşte!";
+    }
+    
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return kategorilerListesi.count;
     }
@@ -42,20 +63,29 @@ class YapilacaklarVC: UITableViewController ,SwipeTableViewCellDelegate{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let hucre=tableView.dequeueReusableCell(withIdentifier: "girisHucresi") as! SwipeTableViewCell;
-        hucre.textLabel?.text=kategorilerListesi[indexPath.row].kategoriAdi;
-        
-        
-        
-        if kategorilerListesi[indexPath.row].isaretlenmisMi{
-            hucre.accessoryType=UITableViewCell.AccessoryType.checkmark;
-            kategorilerListesi[indexPath.row].isaretlenmisMi=true;
-        }
-        else{
-            hucre.accessoryType=UITableViewCell.AccessoryType.none;
-            kategorilerListesi[indexPath.row].isaretlenmisMi=false;
-        }
         
         hucre.delegate=self;
+        
+        if kategorilerListesi.count>0{
+            
+            hucre.textLabel?.text=kategorilerListesi[indexPath.row].kategoriAdi;
+            
+            if kategorilerListesi[indexPath.row].isaretlenmisMi{
+                hucre.accessoryType=UITableViewCell.AccessoryType.checkmark;
+                kategorilerListesi[indexPath.row].isaretlenmisMi=true;
+            }
+            else{
+                hucre.accessoryType=UITableViewCell.AccessoryType.none;
+                kategorilerListesi[indexPath.row].isaretlenmisMi=false;
+            }
+            
+            hucre.backgroundColor=UIColor(hexString: (secilenKategori?.renk)!)?.darken(byPercentage: CGFloat(indexPath.row)/CGFloat(kategorilerListesi.count));
+            hucre.textLabel?.textColor=ContrastColorOf(hucre.backgroundColor!, returnFlat: true);
+        }
+        
+        else{
+            hucre.textLabel?.text="Bişey Eklenmedi Daha";
+        }
         
         return hucre;
     }

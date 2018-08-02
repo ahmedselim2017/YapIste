@@ -8,10 +8,11 @@
     </entity>
     <entity name="UstKategori" representedClassName="UstKategori" syncable="YES" codeGenerationType="class">
         <attribute name="isim" attributeType="String" syncable="YES"/>
+        <attribute name="renk" attributeType="String" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Kategori" inverseName="kategoriler" inverseEntity="Kategori" syncable="YES"/>
     </entity>
     <elements>
         <element name="Kategori" positionX="-223.3203125" positionY="5402.91015625" width="128" height="105"/>
-        <element name="UstKategori" positionX="-614.1640625" positionY="5410.921875" width="128" height="75"/>
+        <element name="UstKategori" positionX="-614.1640625" positionY="5410.921875" width="128" height="90"/>
     </elements>
 </model>

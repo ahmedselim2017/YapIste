@@ -9,6 +9,7 @@
 import UIKit;
 import CoreData;
 import SwipeCellKit;
+import ChameleonFramework;
 
 class UstKategoriVC: UITableViewController,SwipeTableViewCellDelegate{
 
@@ -18,10 +19,18 @@ class UstKategoriVC: UITableViewController,SwipeTableViewCellDelegate{
     override func viewDidLoad() {
         super.viewDidLoad();
         
+        tableView.separatorStyle = .none;
         tableView.rowHeight=80
+        
         verileriGetir(nil);
+        
+        navigationController?.navigationBar.barTintColor=#colorLiteral(red: 0.1052545831, green: 0.6784299016, blue: 0.9725491405, alpha: 1);
+        navigationController?.navigationBar.tintColor=ContrastColorOf(#colorLiteral(red: 0.1052545831, green: 0.6784299016, blue: 0.9725491405, alpha: 1), returnFlat: true);
+        navigationController?.navigationBar.largeTitleTextAttributes=[NSAttributedString.Key.foregroundColor:ContrastColorOf( #colorLiteral(red: 0.1052545831, green: 0.6784299016, blue: 0.9725491405, alpha: 1), returnFlat: true)];
+        title="Yap İşte!";
     
     }
+    
 
     @IBAction func btnEkleBasildi(_ sender: Any) {
         
@@ -34,8 +43,11 @@ class UstKategoriVC: UITableViewController,SwipeTableViewCellDelegate{
             else{
                 let kategori=UstKategori(context: self.icerik);
                 kategori.isim=alarm.textFields![0].text!;
+                kategori.renk=RandomFlatColor().hexValue();
                 self.ustKategoriListe.append(kategori);
+                
                 self.verileriYaz();
+                
                 
             }
         }
@@ -71,7 +83,8 @@ class UstKategoriVC: UITableViewController,SwipeTableViewCellDelegate{
         
         hucre.delegate=self
         hucre.textLabel?.text=ustKategoriListe[indexPath.row].isim;
-        
+        hucre.backgroundColor=UIColor(hexString: ustKategoriListe[indexPath.row].renk!);
+        hucre.textLabel?.textColor=ContrastColorOf(UIColor(hexString: ustKategoriListe[indexPath.row].renk!)!, returnFlat: true);
         return hucre;
     }
     
